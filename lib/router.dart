@@ -25,7 +25,7 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
   //     ? routeSettings.arguments
   //     : null;
   switch (routeSettings.name) {
-    case FirstViewRoute:
+    case firstViewRoute:
       return MaterialPageRoute(builder: (context) => const FirstPage());
     // case UserTypeRoute:
     //   return MaterialPageRoute(builder: (context) => UserType());

@@ -9,6 +9,6 @@ void main() {
   runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     onGenerateRoute: router.generateRoute,
-    initialRoute: FirstViewRoute,
+    initialRoute: firstViewRoute,
   ));
 }
