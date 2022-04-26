@@ -1,9 +1,26 @@
+// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// import 'package:shared_preferences/shared_preferences.dart';
 import 'package:union/routes_names.dart';
 
-class FirstView3 extends StatelessWidget {
-  const FirstView3({Key? key}) : super(key: key);
+class UserType extends StatefulWidget {
+  const UserType({Key? key}) : super(key: key);
+
+  @override
+  _UserTypeState createState() => _UserTypeState();
+}
+
+class _UserTypeState extends State<UserType> {
+  @override
+  void initState() {
+    super.initState();
+    // FirebaseAnalytics().setCurrentScreen(screenName: UserTypeRoute);
+    // Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+    // _prefs.then((prefs) {
+    //   prefs.setBool("welcome", false);
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +34,11 @@ class FirstView3 extends StatelessWidget {
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
             width: 130.0,
             height: 130.0,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("images/dialog.png"),
-                    fit: BoxFit.contain)),
+            child: const Icon(
+              FontAwesomeIcons.users,
+              size: 100.0,
+              color: Colors.white,
+            ),
           ),
           Container(
             width: MediaQuery.of(context).size.width,
@@ -28,7 +46,7 @@ class FirstView3 extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 const Text(
-                  "Vamos lá?",
+                  "Qual seu tipo de usuário?",
                   style: TextStyle(
                     fontSize: 30.0,
                     color: Colors.white,
@@ -49,18 +67,15 @@ class FirstView3 extends StatelessWidget {
                         const Color(0xff1b8dcb),
                       ),
                     ),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0)),
-                    // color: const Color(0xff1b8dcb),
                     child: const Text(
-                      "Login",
+                      "Comum",
                       style: TextStyle(
                         fontSize: 25.0,
                         color: Colors.white,
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, loginRoute);
+                      Navigator.pushNamed(context, registerCommonAvatarRoute);
                     },
                   ),
                 ),
@@ -81,25 +96,24 @@ class FirstView3 extends StatelessWidget {
                   child: ElevatedButton(
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      )),
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                      ),
                       backgroundColor: MaterialStateProperty.all<Color>(
                         Colors.white,
                       ),
                     ),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0)),
-                    // color: Colors.white,
                     child: const Text(
-                      "Cadastre-se",
+                      "Psicólogo",
                       style: TextStyle(
                         fontSize: 25.0,
                         color: Color(0xff1b8dcb),
                       ),
                     ),
                     onPressed: () {
-                      Navigator.pushNamed(context, userTypeRoute);
+                      // Navigator.pushNamed(
+                      //     context, RegisterPsychologistAvatarRoute);
                     },
                   ),
                 ),

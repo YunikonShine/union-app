@@ -9,12 +9,12 @@ import 'package:union/ui/initial/first_view.dart';
 // import 'package:union/ui/list/list_chat.dart';
 // import 'package:union/ui/profile/Profile.dart';
 // import 'package:union/ui/register/PasswordRecovery.dart';
-// import 'package:union/ui/register/RegisterCommonUserAvatar.dart';
-// import 'package:union/ui/register/RegisterCommonUserBasic.dart';
+import 'package:union/ui/register/register_common_user_avatar.dart';
+import 'package:union/ui/register/register_common_user_basic.dart';
 // import 'package:union/ui/register/RegisterPsychologistAvatar.dart';
 // import 'package:union/ui/register/RegisterPsychologistBasic.dart';
 // import 'package:union/ui/register/RegisterPsychologistDocuments.dart';
-// import 'package:union/ui/register/UserType.dart';
+import 'package:union/ui/register/user_type.dart';
 // import 'package:union/ui/report/DevReport.dart';
 // import 'package:union/ui/report/ErrorReport.dart';
 
@@ -27,12 +27,14 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case firstViewRoute:
       return MaterialPageRoute(builder: (context) => const FirstPage());
-    // case UserTypeRoute:
-    //   return MaterialPageRoute(builder: (context) => UserType());
-    // case RegisterCommonAvatarRoute:
-    //   return MaterialPageRoute(builder: (context) => RegisterCommonUserAvatar());
-    // case RegisterCommonBasicRoute:
-    //   return MaterialPageRoute(builder: (context) => RegisterCommonUserBasic(argument));
+    case userTypeRoute:
+      return MaterialPageRoute(builder: (context) => const UserType());
+    case registerCommonAvatarRoute:
+      return MaterialPageRoute(
+          builder: (context) => const RegisterCommonUserAvatar());
+    case registerCommonBasicRoute:
+      return MaterialPageRoute(
+          builder: (context) => const RegisterCommonUserBasic());
     // case RegisterPsychologistAvatarRoute:
     //   return MaterialPageRoute(builder: (context) => RegisterPsychologistAvatar());
     // case RegisterPsychologistBasicRoute:

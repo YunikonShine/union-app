@@ -13,6 +13,9 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^10.1.0
+  email_validator: ^2.0.1
+  responsive_grid: ^2.1.0
+  mask_text_input_formatter: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +29,5 @@ flutter:
     - images/hands.png
     - images/dialog.png
     - images/user.png
+    - images/man_person.png
+    - images/woman_person.png
