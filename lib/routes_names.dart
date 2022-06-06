@@ -13,6 +13,6 @@ const String chatRoute = "Chat";
 const String profileRoute = "Profile";
 const String cvvRoute = "Cvv";
 const String errorReportRoute = "ErrorReport";
-const String devReportRoute = "DevReport";
+const String devAboutRoute = "About";
 const String configRoute = "Config";
 const String donateRoute = "Donate";

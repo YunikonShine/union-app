@@ -220,7 +220,7 @@ class _LoginState extends State<Login> {
                     padding: const EdgeInsets.only(left: 20.0),
                     child: GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, devReportRoute);
+                        Navigator.pushNamed(context, devAboutRoute);
                       },
                       child: Container(
                         padding: const EdgeInsets.only(top: 30.0, bottom: 20.0),
