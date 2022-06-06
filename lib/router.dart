@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union/ui/initial/first_view.dart';
+import 'package:union/ui/login/login.dart';
 import 'package:union/ui/register/psychologist/register_psychologist_avatar.dart';
 import 'package:union/ui/register/psychologist/register_psychologist_basic.dart';
 import 'package:union/ui/register/psychologist/register_psychologist_documents.dart';
@@ -47,8 +48,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case registerPsychologistDocumentRoute:
       return MaterialPageRoute(
           builder: (context) => const RegisterPsychologistDocuments());
-    // case LoginRoute:
-    //   return MaterialPageRoute(builder: (context) => Login());
+    case loginRoute:
+      return MaterialPageRoute(builder: (context) => const Login());
     // case PasswordRecoveryRoute:
     //   return MaterialPageRoute(builder: (context) => PasswordRecovery());
     // case UserListRoute:
