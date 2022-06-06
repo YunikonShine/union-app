@@ -16,6 +16,8 @@ dependencies:
   email_validator: ^2.0.1
   responsive_grid: ^2.1.0
   mask_text_input_formatter: ^2.3.0
+  cpf_cnpj_validator: ^2.0.0
+  image_picker: ^0.8.5+3
 
 dev_dependencies:
   flutter_test:
@@ -31,3 +33,4 @@ flutter:
     - images/user.png
     - images/man_person.png
     - images/woman_person.png
+    - images/square.png

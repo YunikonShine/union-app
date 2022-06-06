@@ -112,8 +112,8 @@ class _UserTypeState extends State<UserType> {
                       ),
                     ),
                     onPressed: () {
-                      // Navigator.pushNamed(
-                      //     context, RegisterPsychologistAvatarRoute);
+                      Navigator.pushNamed(
+                          context, registerPsychologistAvatarRoute);
                     },
                   ),
                 ),
