@@ -7,6 +7,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 // import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:union/routes_names.dart';
 // import 'package:stomp/stomp.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/client/Endpoints.dart';
@@ -551,7 +552,7 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
 // //              "userImage": map["image"],
 // //              "userName": map["name"],
 //             };
-//             Navigator.pushNamed(context, ChatRoute, arguments: parameter);
+            Navigator.pushNamed(context, chatRoute);
           },
           child: Container(
             color: const Color(0xff14bed8),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union/ui/about/dev_about.dart';
+import 'package:union/ui/chat/chat_screen.dart';
 import 'package:union/ui/errorReport/error_report.dart';
 import 'package:union/ui/initial/first_view.dart';
 import 'package:union/ui/login/login.dart';
@@ -59,8 +60,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     //   return MaterialPageRoute(builder: (context) => ListChat(argument));
     case psychologistListRoute:
       return MaterialPageRoute(builder: (context) => const ListChat());
-    // case ChatRoute:
-    //   return MaterialPageRoute(builder: (context) => ChatScreen(argument));
+    case chatRoute:
+      return MaterialPageRoute(builder: (context) => const ChatScreen());
     // case ProfileRoute:
     //   return MaterialPageRoute(builder: (context) => Profile(argument));
     // case CvvRoute:
