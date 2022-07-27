@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:union/ui/about/dev_about.dart';
 import 'package:union/ui/chat/chat_screen.dart';
+import 'package:union/ui/cvv/Cvv.dart';
 import 'package:union/ui/errorReport/error_report.dart';
 import 'package:union/ui/initial/first_view.dart';
 import 'package:union/ui/login/login.dart';
@@ -64,8 +65,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => const ChatScreen());
     // case ProfileRoute:
     //   return MaterialPageRoute(builder: (context) => Profile(argument));
-    // case CvvRoute:
-    //   return MaterialPageRoute(builder: (context) => Cvv(argument));
+    case cvvRoute:
+      return MaterialPageRoute(builder: (context) => const Cvv());
     case errorReportRoute:
       return MaterialPageRoute(builder: (context) => const ErrorReport());
     case devAboutRoute:

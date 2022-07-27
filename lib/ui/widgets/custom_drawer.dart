@@ -10,6 +10,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:union/domain/enumerations/UserRole.dart';
 // import 'package:union/client/Endpoints.dart';
 
+import '../../routes_names.dart';
 import 'alert_dialog_message.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -225,9 +226,8 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.pop(context);
-                      // Navigator.pushNamed(context, CvvRoute,
-                      //     arguments: user);
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, cvvRoute);
                     },
                     child: Container(
                       width: 100.0,
