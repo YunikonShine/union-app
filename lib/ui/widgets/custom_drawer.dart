@@ -77,7 +77,7 @@ class CustomDrawer extends StatelessWidget {
                           height: 100.0,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("images/user.png"),
+                              image: AssetImage("images/man_person.png"),
                               fit: BoxFit.contain,
                             ),
                           ),

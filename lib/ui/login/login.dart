@@ -131,14 +131,14 @@ class _LoginState extends State<Login> {
                   ),
                   onPressed: () async {
                     //await googleService.getUser();
-                    if (_formKey.currentState!.validate()) {
+                    // if (_formKey.currentState!.validate()) {
                       AlertDialogMessage.showLoading(context);
                       // int status = await login(
                       //     emailController.text, passwordController.text);
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
                       // if (status == HttpStatus.ok) {
                       // await GetIt.instance<GoogleService>().getUser();
-                      Navigator.pop(context);
+                      // Navigator.pop(context);
                       Navigator.pushNamed(context, psychologistListRoute);
                       // } else if (status == HttpStatus.unauthorized) {
                       //   AlertDialogMessage.showDialogMessage(
@@ -162,7 +162,7 @@ class _LoginState extends State<Login> {
                       //     //Navigator.pushNamed(context, LoginRoute);
                       //   });
                       // }
-                    }
+                    // }
                   },
                 ),
               ),

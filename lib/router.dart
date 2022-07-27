@@ -13,7 +13,7 @@ import 'package:union/ui/register/psychologist/register_psychologist_documents.d
 // import 'package:union/ui/donate/Donate.dart';
 // import 'package:union/ui/inicial/Login.dart';
 // import 'package:union/ui/inicial/first_view.dart';
-// import 'package:union/ui/list/list_chat.dart';
+import 'package:union/ui/chat/list_chat.dart';
 // import 'package:union/ui/profile/Profile.dart';
 // import 'package:union/ui/register/PasswordRecovery.dart';
 import 'package:union/ui/register/user/register_common_user_avatar.dart';
@@ -57,8 +57,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => const PasswordRecovery());
     // case UserListRoute:
     //   return MaterialPageRoute(builder: (context) => ListChat(argument));
-    // case PsychologistListRoute:
-    //   return MaterialPageRoute(builder: (context) => ListChat(argument));
+    case psychologistListRoute:
+      return MaterialPageRoute(builder: (context) => const ListChat());
     // case ChatRoute:
     //   return MaterialPageRoute(builder: (context) => ChatScreen(argument));
     // case ProfileRoute:
