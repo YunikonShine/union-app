@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:union/ui/about/dev_about.dart';
 import 'package:union/ui/chat/chat_screen.dart';
-import 'package:union/ui/cvv/Cvv.dart';
+import 'package:union/ui/cvv/cvv.dart';
 import 'package:union/ui/errorReport/error_report.dart';
 import 'package:union/ui/initial/first_view.dart';
 import 'package:union/ui/login/login.dart';
+import 'package:union/ui/profile/profile.dart';
 import 'package:union/ui/register/passwordRecovey/password_recovery.dart';
 import 'package:union/ui/register/psychologist/register_psychologist_avatar.dart';
 import 'package:union/ui/register/psychologist/register_psychologist_basic.dart';
@@ -63,8 +64,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => const ListChat());
     case chatRoute:
       return MaterialPageRoute(builder: (context) => const ChatScreen());
-    // case ProfileRoute:
-    //   return MaterialPageRoute(builder: (context) => Profile(argument));
+    case profileRoute:
+      return MaterialPageRoute(builder: (context) => const Profile());
     case cvvRoute:
       return MaterialPageRoute(builder: (context) => const Cvv());
     case errorReportRoute:

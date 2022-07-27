@@ -1,6 +1,7 @@
 // import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:union/routes_names.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:share/share.dart';
 // import 'package:union/RoutesNames.dart';
@@ -10,7 +11,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:union/domain/enumerations/UserRole.dart';
 // import 'package:union/client/Endpoints.dart';
 
-import '../../routes_names.dart';
 import 'alert_dialog_message.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -63,12 +63,11 @@ class CustomDrawer extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Navigator.pop(context);
-                      // Navigator.pushNamed(
-                      //   context,
-                      //   ProfileRoute,
-                      //   arguments: user,
-                      // );
+                      Navigator.pop(context);
+                      Navigator.pushNamed(
+                        context,
+                        profileRoute
+                      );
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(top: 50.0),

@@ -1,8 +1,8 @@
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:union/ui/widgets/custom_drawer.dart';
 
-import '../widgets/custom_drawer.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/domain/User.dart';
