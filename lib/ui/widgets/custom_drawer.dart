@@ -188,9 +188,8 @@ class CustomDrawer extends StatelessWidget {
                 margin: const EdgeInsets.only(bottom: 15.0),
                 child: GestureDetector(
                     onTap: () {
-                      // Navigator.pop(context);
-                      // Navigator.pushNamed(context, DonateRoute,
-                      //     arguments: user);
+                      Navigator.pop(context);
+                      Navigator.pushNamed(context, donateRoute);
                     },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,

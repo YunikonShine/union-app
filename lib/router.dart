@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:union/ui/about/dev_about.dart';
 import 'package:union/ui/chat/chat_screen.dart';
 import 'package:union/ui/cvv/cvv.dart';
+import 'package:union/ui/donation/donate.dart';
 import 'package:union/ui/errorReport/error_report.dart';
 import 'package:union/ui/initial/first_view.dart';
 import 'package:union/ui/login/login.dart';
@@ -74,8 +75,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => const DevAbout());
     // case ConfigRoute:
     //   return MaterialPageRoute(builder: (context) => Config(argument));
-    // case DonateRoute:
-    //   return MaterialPageRoute(builder: (context) => Donate(argument));
+    case donateRoute:
+      return MaterialPageRoute(builder: (context) => const Donate());
     default:
       return MaterialPageRoute(builder: (context) => const FirstPage());
   }
