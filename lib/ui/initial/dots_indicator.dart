@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:union/const/colors.dart';
+import 'package:union/constants/colors.dart';
 
 class DotsIndicator extends AnimatedWidget {
   const DotsIndicator({
