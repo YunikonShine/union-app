@@ -27,13 +27,13 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - images/union.png
-    - images/hands.png
-    - images/dialog.png
-    - images/user.png
-    - images/man_person.png
-    - images/woman_person.png
-    - images/square.png
-    - images/vinicius.png
-    - images/amanda.png
-    - images/cvv.png
+    - assets/images/union.png
+    - assets/images/hands.png
+    - assets/images/dialog.png
+    - assets/images/user.png
+    - assets/images/man_person.png
+    - assets/images/woman_person.png
+    - assets/images/square.png
+    - assets/images/vinicius.png
+    - assets/images/amanda.png
+    - assets/images/cvv.png

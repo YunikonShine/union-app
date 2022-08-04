@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
-const appImage = AssetImage("images/union.png");
-const hands = AssetImage("images/hands.png");
-const dialog = AssetImage("images/dialog.png");
+const appImage = AssetImage("assets/images/union.png");
+const hands = AssetImage("assets/images/hands.png");
+const dialog = AssetImage("assets/images/dialog.png");
