@@ -18,7 +18,7 @@ import 'package:union/routes_names.dart';
 // import 'package:union/domain/enumerations/UserRole.dart';
 // import 'package:union/service/NotificationService.dart';
 // import 'package:union/service/Websocket.dart';
-import 'package:union/ui/widgets/custom_drawer.dart';
+import 'package:union/widgets/custom_drawer.dart';
 // import 'package:union/util/Crypt.dart';
 
 class ListChat extends StatefulWidget {

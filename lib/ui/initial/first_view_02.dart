@@ -3,9 +3,9 @@ import 'package:union/constants/colors.dart';
 import 'package:union/constants/images.dart';
 import 'package:union/constants/text_size.dart';
 import 'package:union/constants/texts.dart';
-import 'package:union/ui/widgets/default/default_container.dart';
-import 'package:union/ui/widgets/default/default_text.dart';
-import 'package:union/ui/widgets/initial_icon.dart';
+import 'package:union/widgets/default/default_container.dart';
+import 'package:union/widgets/default/default_text.dart';
+import 'package:union/widgets/initial_icon.dart';
 
 class FirstView2 extends StatelessWidget {
   const FirstView2({Key? key}) : super(key: key);

@@ -7,7 +7,7 @@ import 'package:responsive_grid/responsive_grid.dart';
 // import 'package:union/domain/Psychologist.dart';
 // import 'package:union/ui/widgets/AlertDialogMessage.dart';
 // import 'package:http/http.dart' as http;
-import 'package:union/ui/widgets/alert_dialog_message.dart';
+import 'package:union/widgets/alert_dialog_message.dart';
 import 'package:union/routes_names.dart';
 
 class RegisterPsychologistDocuments extends StatefulWidget {

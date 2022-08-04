@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 // import 'package:union/ui/widgets/DefaultTextField.dart';
 // import 'package:union/ui/widgets/custom_drawer.dart';
 // import 'package:http/http.dart' as http;
-import 'package:union/ui/widgets/default/default_text_field.dart';
-import 'package:union/ui/widgets/alert_dialog_message.dart';
+import 'package:union/widgets/default/default_text_field.dart';
+import 'package:union/widgets/alert_dialog_message.dart';
 
 class ErrorReport extends StatefulWidget {
   const ErrorReport({Key? key}) : super(key: key);

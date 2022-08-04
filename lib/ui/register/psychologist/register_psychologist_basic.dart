@@ -4,13 +4,13 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import 'package:union/ui/widgets/default/default_text_field.dart';
+import 'package:union/widgets/default/default_text_field.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/domain/Psychologist.dart';
 // import 'package:union/ui/widgets/AlertDialogMessage.dart';
 // import 'package:union/ui/widgets/DefaultTextField.dart';
 // import 'package:union/util/InputMask.dart';
-import 'package:union/ui/widgets/alert_dialog_message.dart';
+import 'package:union/widgets/alert_dialog_message.dart';
 import 'package:union/util/input_mask.dart';
 import 'package:union/routes_names.dart';
 

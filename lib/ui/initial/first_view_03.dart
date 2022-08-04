@@ -6,10 +6,10 @@ import 'package:union/constants/text_size.dart';
 import 'package:union/constants/texts.dart';
 
 import 'package:union/routes_names.dart';
-import 'package:union/ui/widgets/default/default_button.dart';
-import 'package:union/ui/widgets/default/default_container.dart';
-import 'package:union/ui/widgets/default/default_text.dart';
-import 'package:union/ui/widgets/initial_icon.dart';
+import 'package:union/widgets/default/default_button.dart';
+import 'package:union/widgets/default/default_container.dart';
+import 'package:union/widgets/default/default_text.dart';
+import 'package:union/widgets/initial_icon.dart';
 
 class FirstView3 extends StatelessWidget {
   const FirstView3({Key? key}) : super(key: key);

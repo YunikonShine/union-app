@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union/constants/colors.dart';
-import 'package:union/ui/widgets/default/default_text.dart';
+import 'package:union/widgets/default/default_text.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton(

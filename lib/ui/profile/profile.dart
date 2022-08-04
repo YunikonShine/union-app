@@ -17,10 +17,10 @@ import 'package:flutter/services.dart';
 // import 'package:union/util/InputMask.dart';
 // import 'package:http/http.dart' as http;
 import 'package:union/routes_names.dart';
-import 'package:union/ui/widgets/alert_dialog_message.dart';
-import 'package:union/ui/widgets/custom_drawer.dart';
-import 'package:union/ui/widgets/default/default_text_field.dart';
-import 'package:union/ui/widgets/pointed_separator.dart';
+import 'package:union/widgets/alert_dialog_message.dart';
+import 'package:union/widgets/custom_drawer.dart';
+import 'package:union/widgets/default/default_text_field.dart';
+import 'package:union/widgets/pointed_separator.dart';
 import 'package:union/util/input_mask.dart';
 
 class Profile extends StatefulWidget {

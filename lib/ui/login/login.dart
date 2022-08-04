@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 // import 'package:union/ui/widgets/AlertDialogMessage.dart';
 // import 'package:union/ui/widgets/DefaultTextField.dart';
 // import 'package:union/util/Crypt.dart';
-import 'package:union/ui/widgets/default/default_text_field.dart';
+import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/routes_names.dart';
-import 'package:union/ui/widgets/alert_dialog_message.dart';
+import 'package:union/widgets/alert_dialog_message.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
