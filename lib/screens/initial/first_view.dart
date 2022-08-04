@@ -3,10 +3,10 @@
 
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-import 'package:union/ui/initial/dots_indicator.dart';
-import 'package:union/ui/initial/first_view_01.dart';
-import 'package:union/ui/initial/first_view_02.dart';
-import 'package:union/ui/initial/first_view_03.dart';
+import 'package:union/screens/initial/dots_indicator.dart';
+import 'package:union/screens/initial/first_view_01.dart';
+import 'package:union/screens/initial/first_view_02.dart';
+import 'package:union/screens/initial/first_view_03.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:permissions_plugin/permissions_plugin.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
