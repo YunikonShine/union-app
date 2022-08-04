@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:union/const/colors.dart';
 
 class DotsIndicator extends AnimatedWidget {
   const DotsIndicator({
@@ -30,7 +31,7 @@ class DotsIndicator extends AnimatedWidget {
         width: 25.0,
         child: Center(
           child: Material(
-            color: Colors.white,
+            color: white,
             type: MaterialType.circle,
             child: SizedBox(
               width: 10.0 * zoom,
@@ -44,7 +45,7 @@ class DotsIndicator extends AnimatedWidget {
         width: 25.0,
         child: Center(
           child: Material(
-            color: Colors.white,
+            color: white,
             type: MaterialType.circle,
             child: SizedBox(
               width: 10.0 * zoom,

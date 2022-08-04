@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:union/const/border_radius_size.dart';
+import 'package:union/const/colors.dart';
+import 'package:union/const/images.dart';
+import 'package:union/const/text_size.dart';
+import 'package:union/const/texts.dart';
 
 import 'package:union/routes_names.dart';
+import 'package:union/ui/widgets/default_button.dart';
+import 'package:union/ui/widgets/default_container.dart';
+import 'package:union/ui/widgets/default_text.dart';
+import 'package:union/ui/widgets/initial_icon.dart';
 
 class FirstView3 extends StatelessWidget {
   const FirstView3({Key? key}) : super(key: key);
@@ -8,103 +17,62 @@ class FirstView3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff14bed8),
+      backgroundColor: primaryBlue,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          Container(
-            margin:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.15),
-            width: 130.0,
-            height: 130.0,
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("images/dialog.png"),
-                    fit: BoxFit.contain)),
+          const InitialIcon(
+            iconImage: dialog,
+            mini: true,
           ),
-          Container(
-            width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
-            child: Column(
-              children: <Widget>[
-                const Text(
-                  "Vamos lá?",
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    color: Colors.white,
-                  ),
+          DefaultContainer(
+            childrenList: <Widget>[
+              DefaultText(
+                text: initialText3,
+                size: TextSize.big,
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 40.0,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 40.0),
-                  width: 250.0,
-                  height: 65.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15.0),
-                        ),
-                      ),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        const Color(0xff1b8dcb),
-                      ),
-                    ),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0)),
-                    // color: const Color(0xff1b8dcb),
-                    child: const Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, loginRoute);
-                    },
-                  ),
+                width: 250.0,
+                height: 65.0,
+                child: DefaultButton(
+                  backgroundColor: secundaryBlue,
+                  text: "Login",
+                  borderRadius: BorderRadiusSize.normal,
+                  textSize: TextSize.normal,
+                  onPressed: () {
+                    Navigator.pushNamed(context, loginRoute);
+                  },
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 20.0, bottom: 10.0),
-                  child: const Text(
-                    "ou",
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      color: Colors.white,
-                    ),
-                  ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(
+                  top: 20.0,
+                  bottom: 10.0,
                 ),
-                Container(
-                  margin: const EdgeInsets.only(top: 20.0),
-                  width: 250.0,
-                  height: 65.0,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      )),
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Colors.white,
-                      ),
-                    ),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadius.circular(15.0)),
-                    // color: Colors.white,
-                    child: const Text(
-                      "Cadastre-se",
-                      style: TextStyle(
-                        fontSize: 25.0,
-                        color: Color(0xff1b8dcb),
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, userTypeRoute);
-                    },
-                  ),
+                child: DefaultText(
+                  text: "ou",
+                  size: TextSize.big,
                 ),
-              ],
-            ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 20.0),
+                width: 250.0,
+                height: 65.0,
+                child: DefaultButton(
+                  backgroundColor: white,
+                  borderRadius: BorderRadiusSize.normal,
+                  text: "Cadastre-se",
+                  textSize: TextSize.normal,
+                  textColor: secundaryBlue,
+                  onPressed: () {
+                    Navigator.pushNamed(context, userTypeRoute);
+                  },
+                ),
+              ),
+            ],
           ),
         ],
       ),
