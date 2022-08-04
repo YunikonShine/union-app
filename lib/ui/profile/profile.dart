@@ -19,7 +19,7 @@ import 'package:flutter/services.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/ui/widgets/alert_dialog_message.dart';
 import 'package:union/ui/widgets/custom_drawer.dart';
-import 'package:union/ui/widgets/default_text_field.dart';
+import 'package:union/ui/widgets/default/default_text_field.dart';
 import 'package:union/ui/widgets/pointed_separator.dart';
 import 'package:union/util/input_mask.dart';
 

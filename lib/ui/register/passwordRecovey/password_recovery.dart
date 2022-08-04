@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/client/UserClient.dart';
 import 'package:union/ui/widgets/alert_dialog_message.dart';
-import 'package:union/ui/widgets/default_text_field.dart';
+import 'package:union/ui/widgets/default/default_text_field.dart';
 // import 'package:http/http.dart' as http;
 
 class PasswordRecovery extends StatefulWidget {

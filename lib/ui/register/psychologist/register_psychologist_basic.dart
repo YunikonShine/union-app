@@ -4,7 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:responsive_grid/responsive_grid.dart';
-import 'package:union/ui/widgets/default_text_field.dart';
+import 'package:union/ui/widgets/default/default_text_field.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/domain/Psychologist.dart';
 // import 'package:union/ui/widgets/AlertDialogMessage.dart';
