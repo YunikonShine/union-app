@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:union/constants/border_radius_size.dart';
-import 'package:union/constants/colors.dart';
-import 'package:union/constants/images.dart';
-import 'package:union/constants/text_size.dart';
-import 'package:union/constants/texts.dart';
+import 'package:union/util/constants/border_radius_size.dart';
+import 'package:union/util/constants/colors.dart';
+import 'package:union/util/constants/images.dart';
+import 'package:union/util/constants/text_size.dart';
+import 'package:union/util/constants/texts.dart';
 
 import 'package:union/routes_names.dart';
 import 'package:union/widgets/default/default_button.dart';
