@@ -1,16 +1,10 @@
+import 'dart:convert';
+
 import 'package:email_validator/email_validator.dart';
-// import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
-// import 'package:get_it/get_it.dart';
-// import 'package:shared_preferences/shared_preferences.dart';
-// import 'package:union/RoutesNames.dart';
-// import 'package:union/client/Endpoints.dart';
-// import 'package:union/domain/User.dart';
-// import 'package:union/domain/enumerations/UserRole.dart';
-// import 'package:union/firebase/GoogleService.dart';
-// import 'package:union/ui/widgets/AlertDialogMessage.dart';
-// import 'package:union/ui/widgets/DefaultTextField.dart';
-// import 'package:union/util/Crypt.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:http/http.dart';
+import 'package:union/services/auth_service.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/widgets/alert_dialog_message.dart';
@@ -23,12 +17,15 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  TextEditingController emailController = TextEditingController();
-  FocusNode emailFocus = FocusNode();
-  TextEditingController passwordController = TextEditingController();
-  FocusNode passwordFocus = FocusNode();
+  final TextEditingController emailController = TextEditingController();
+  final FocusNode emailFocus = FocusNode();
+  final TextEditingController passwordController = TextEditingController();
+  final FocusNode passwordFocus = FocusNode();
 
   final _formKey = GlobalKey<FormState>();
+  final AuthService authService = AuthService();
+
+  final storage = const FlutterSecureStorage();
 
   @override
   void initState() {
@@ -56,7 +53,7 @@ class _LoginState extends State<Login> {
                 height: 200.0,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("images/union.png"),
+                    image: AssetImage("assets/images/union.png"),
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -131,15 +128,43 @@ class _LoginState extends State<Login> {
                   ),
                   onPressed: () async {
                     //await googleService.getUser();
-                    // if (_formKey.currentState!.validate()) {
+                    if (_formKey.currentState!.validate()) {
                       AlertDialogMessage.showLoading(context);
+                      Response authResponse = await authService.login(
+                          emailController.text, passwordController.text);
+                      switch (authResponse.statusCode) {
+                        case 200:
+                          var data = jsonDecode(authResponse.body);
+                          storage.write(
+                            key: "token",
+                            value: data['token'],
+                          );
+                          storage.write(
+                            key: "refreshToken",
+                            value: data['refreshToken'],
+                          );
+                          Navigator.pushReplacementNamed(
+                              context, psychologistListRoute);
+                          break;
+                        default:
+                          AlertDialogMessage.showDialogMessage(
+                            "Oops...",
+                            "Email e/ou senha incorretos",
+                            "OK",
+                            context,
+                            () {
+                              Navigator.pop(context);
+                            },
+                          );
+                          break;
+                      }
                       // int status = await login(
                       //     emailController.text, passwordController.text);
                       // Navigator.pop(context);
                       // if (status == HttpStatus.ok) {
                       // await GetIt.instance<GoogleService>().getUser();
                       // Navigator.pop(context);
-                      Navigator.pushNamed(context, psychologistListRoute);
+                      // Navigator.pushNamed(context, psychologistListRoute);
                       // } else if (status == HttpStatus.unauthorized) {
                       //   AlertDialogMessage.showDialogMessage(
                       //       "Oops...",
@@ -162,7 +187,7 @@ class _LoginState extends State<Login> {
                       //     //Navigator.pushNamed(context, LoginRoute);
                       //   });
                       // }
-                    // }
+                    }
                   },
                 ),
               ),
@@ -174,7 +199,6 @@ class _LoginState extends State<Login> {
                       Navigator.pushNamed(context, userTypeRoute);
                     },
                     child: Container(
-                      //alignment: Alignment(0, 0),
                       height: 50.0,
                       width: 150.0,
                       padding: const EdgeInsets.only(top: 30.0, right: 20.0),
@@ -189,7 +213,6 @@ class _LoginState extends State<Login> {
                       Navigator.pushNamed(context, passwordRecoveryRoute);
                     },
                     child: Container(
-                      //alignment: Alignment(0, 0),
                       height: 50.0,
                       width: 150.0,
                       padding: const EdgeInsets.only(top: 30.0, left: 20.0),
