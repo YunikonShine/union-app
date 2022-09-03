@@ -154,6 +154,7 @@ class _LoginState extends State<Login> {
                             context,
                             () {
                               Navigator.pop(context);
+                              Navigator.pop(context);
                             },
                           );
                           break;

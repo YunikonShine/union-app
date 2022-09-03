@@ -3,6 +3,8 @@
 
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:union/routes_names.dart';
 import 'package:union/screens/initial/dots_indicator.dart';
 import 'package:union/screens/initial/first_view_01.dart';
 import 'package:union/screens/initial/first_view_02.dart';
@@ -34,9 +36,16 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+  final storage = const FlutterSecureStorage();
+
   @override
   void initState() {
     super.initState();
+    storage.read(key: "token").then((token) => {
+          if (token!.isNotEmpty)
+            Navigator.pushReplacementNamed(context, psychologistListRoute)
+        });
+
     // FirebaseAnalytics().setCurrentScreen(screenName: FirstViewRoute);
     //databaseService.dropDatabase();
     //ThemeUtil.preencherThemeColor();
