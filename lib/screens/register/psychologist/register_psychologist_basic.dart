@@ -4,6 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/domain/Psychologist.dart';
@@ -128,7 +129,7 @@ class _RegisterPsychologistBasicState extends State<RegisterPsychologistBasic> {
                         height: 100.0,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("images/man_person.png"),
+                              image: manPerson,
                               fit: BoxFit.contain),
                         ),
                       ),

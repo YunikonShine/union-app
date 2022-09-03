@@ -1,5 +1,6 @@
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/client/PersonClient.dart';
@@ -85,7 +86,7 @@ class _DevAboutState extends State<DevAbout> {
           height: 50.0,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/union.png"),
+              image: appImage,
               fit: BoxFit.contain,
             ),
           ),
@@ -123,7 +124,7 @@ class _DevAboutState extends State<DevAbout> {
                     ),
                   ),
                   image: DecorationImage(
-                    image: AssetImage("images/vinicius.png"),
+                    image: viniciusImage,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -165,7 +166,7 @@ class _DevAboutState extends State<DevAbout> {
                     ),
                   ),
                   image: DecorationImage(
-                    image: AssetImage("images/amanda.png"),
+                    image: amandaImage,
                     fit: BoxFit.contain,
                   ),
                 ),

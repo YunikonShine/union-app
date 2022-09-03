@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:union/routes_names.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:share/share.dart';
 // import 'package:union/RoutesNames.dart';
@@ -77,7 +78,7 @@ class CustomDrawer extends StatelessWidget {
                           height: 100.0,
                           decoration: const BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("images/man_person.png"),
+                              image: manPerson,
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -232,7 +233,7 @@ class CustomDrawer extends StatelessWidget {
                       height: 100.0,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage("images/cvv.png"),
+                          image: cvv,
                           fit: BoxFit.contain,
                         ),
                       ),

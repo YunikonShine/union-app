@@ -3,6 +3,7 @@ import 'dart:async';
 
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:flutter/services.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:stomp/stomp.dart';
@@ -24,7 +25,7 @@ class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
 //  String userIdTo;
 //  String chatId;
-  final String userAvatar = "images/man_person.png";
+  final AssetImage userAvatar = manPerson;
   final String userName = "Nome";
   final String userHash = "123123123";
 
@@ -41,7 +42,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final String userAvatar = "images/man_person.png";
+  final AssetImage userAvatar = manPerson;
   final String userName = "Nome";
   String userPublicKey = "key";
   final String userHash = "123123123";
@@ -137,7 +138,7 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: AssetImage(userAvatar),
+                  image: userAvatar,
                   fit: BoxFit.contain,
                 ),
               ),

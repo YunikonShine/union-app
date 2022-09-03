@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:http/http.dart' as http;
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/widgets/alert_dialog_message.dart';
 // import 'package:union/RoutesNames.dart';
@@ -94,7 +95,7 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
                         height: 100.0,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage("images/man_person.png"),
+                              image: manPerson,
                               fit: BoxFit.contain),
                         ),
                       ),

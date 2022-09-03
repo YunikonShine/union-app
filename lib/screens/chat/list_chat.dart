@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 // import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:union/routes_names.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:stomp/stomp.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/client/Endpoints.dart';
@@ -198,7 +199,7 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
             height: 50.0,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/union.png"),
+                image: appImage,
                 fit: BoxFit.contain,
               ),
             ),
@@ -225,7 +226,7 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
             height: 50.0,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/union.png"),
+                image: appImage,
                 fit: BoxFit.contain,
               ),
             ),
@@ -331,7 +332,7 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
             height: 50.0,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("images/union.png"),
+                image: appImage,
                 fit: BoxFit.contain,
               ),
             ),
@@ -572,7 +573,7 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
                               decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 image: DecorationImage(
-                                    image: AssetImage("images/man_person.png"),
+                                    image: manPerson,
                                     //image: AssetImage(imageList(index)),
                                     fit: BoxFit.cover),
                               ),

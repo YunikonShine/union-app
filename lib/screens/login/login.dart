@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 import 'package:union/services/auth_service.dart';
+import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/widgets/alert_dialog_message.dart';
@@ -53,7 +54,7 @@ class _LoginState extends State<Login> {
                 height: 200.0,
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage("assets/images/union.png"),
+                    image: appImage,
                     fit: BoxFit.contain,
                   ),
                 ),

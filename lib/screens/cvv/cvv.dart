@@ -1,6 +1,7 @@
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/custom_drawer.dart';
 
 // import 'package:get_it/get_it.dart';
@@ -28,7 +29,7 @@ class Cvv extends StatelessWidget {
           height: 50.0,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/union.png"),
+              image: appImage,
               fit: BoxFit.contain,
             ),
           ),
@@ -56,7 +57,7 @@ class Cvv extends StatelessWidget {
                         height: 100.0,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("images/cvv.png"),
+                            image: cvv,
                             fit: BoxFit.contain,
                           ),
                         ),

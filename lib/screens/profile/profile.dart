@@ -17,6 +17,7 @@ import 'package:flutter/services.dart';
 // import 'package:union/util/InputMask.dart';
 // import 'package:http/http.dart' as http;
 import 'package:union/routes_names.dart';
+import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/alert_dialog_message.dart';
 import 'package:union/widgets/custom_drawer.dart';
 import 'package:union/widgets/default/default_text_field.dart';
@@ -81,7 +82,7 @@ class _ProfileState extends State<Profile> {
           height: 50.0,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/union.png"),
+              image: appImage,
               fit: BoxFit.contain,
             ),
           ),
@@ -113,7 +114,7 @@ class _ProfileState extends State<Profile> {
                               height: 100.0,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("images/man_person.png"),
+                                  image: manPerson,
                                   fit: BoxFit.contain,
                                 ),
                               ),

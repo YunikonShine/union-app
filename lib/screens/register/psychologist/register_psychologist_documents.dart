@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:responsive_grid/responsive_grid.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/client/PsychologistClient.dart';
 // import 'package:union/domain/Psychologist.dart';
@@ -60,7 +61,7 @@ class _RegisterPsychologistDocumentsState
                       height: 100.0,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage("images/man_person.png"),
+                            image: manPerson,
                             fit: BoxFit.contain),
                       ),
                     ),
@@ -227,7 +228,7 @@ class _RegisterPsychologistDocumentsState
                             height: 200,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage("images/square.png"),
+                                image: square,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -347,7 +348,7 @@ class _RegisterPsychologistDocumentsState
                             height: 200,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage("images/square.png"),
+                                image: square,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -467,7 +468,7 @@ class _RegisterPsychologistDocumentsState
                             height: 200,
                             decoration: const BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage("images/square.png"),
+                                image: square,
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -601,7 +602,7 @@ class _RegisterPsychologistDocumentsState
                               height: 200,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("images/square.png"),
+                                  image: square,
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -734,7 +735,7 @@ class _RegisterPsychologistDocumentsState
                               height: 200,
                               decoration: const BoxDecoration(
                                 image: DecorationImage(
-                                  image: AssetImage("images/square.png"),
+                                  image: square,
                                   fit: BoxFit.contain,
                                 ),
                               ),

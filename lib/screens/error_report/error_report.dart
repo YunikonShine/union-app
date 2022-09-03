@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 // import 'package:firebase_analytics/firebase_analKytics.dart';
 import 'package:flutter/material.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/client/ReportClient.dart';
 // import 'package:union/domain/ReportMessage.dart';
@@ -51,7 +52,7 @@ class _ErrorReportState extends State<ErrorReport> {
           height: 50.0,
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("images/union.png"),
+              image: appImage,
               fit: BoxFit.contain,
             ),
           ),

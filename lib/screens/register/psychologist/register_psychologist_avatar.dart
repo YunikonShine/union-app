@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 // import 'package:union/RoutesNames.dart';
 // import 'package:union/domain/Psychologist.dart';
 import 'package:union/routes_names.dart';
+import 'package:union/util/constants/images.dart';
 
 class RegisterPsychologistAvatar extends StatefulWidget {
   const RegisterPsychologistAvatar({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class _RegisterPsychologistAvatarState
     // FirebaseAnalytics().setCurrentScreen(screenName: RegisterPsychologistAvatarRoute);
   }
 
-  List<String> images = ["images/man_person.png", "images/woman_person.png"];
+  List<AssetImage> images = [manPerson, womanPerson];
 
   int index = 0;
 
@@ -109,9 +110,7 @@ class _RegisterPsychologistAvatarState
                           ),
                         ),
                         image: DecorationImage(
-                          image: AssetImage(
-                            images[0],
-                          ),
+                          image: images[0],
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -138,9 +137,7 @@ class _RegisterPsychologistAvatarState
                           ),
                         ),
                         image: DecorationImage(
-                          image: AssetImage(
-                            images[1],
-                          ),
+                          image: images[1],
                           fit: BoxFit.contain,
                         ),
                       ),

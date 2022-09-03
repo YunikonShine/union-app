@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:union/routes_names.dart';
+import 'package:union/util/constants/images.dart';
 // import 'package:union/domain/CommonUser.dart';
 
 class RegisterCommonUserAvatar extends StatefulWidget {
@@ -20,7 +21,7 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
     // FirebaseAnalytics().setCurrentScreen(screenName: RegisterCommonAvatarRoute);
   }
 
-  List<String> images = ["images/man_person.png", "images/woman_person.png"];
+  List<AssetImage> images = [manPerson, womanPerson];
 
   int index = 0;
 
@@ -109,9 +110,7 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
                           ),
                         ),
                         image: DecorationImage(
-                          image: AssetImage(
-                            images[0],
-                          ),
+                          image: images[0],
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -138,9 +137,7 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
                           ),
                         ),
                         image: DecorationImage(
-                          image: AssetImage(
-                            images[1],
-                          ),
+                          image: images[1],
                           fit: BoxFit.contain,
                         ),
                       ),
