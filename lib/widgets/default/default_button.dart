@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:union/util/constants/colors.dart';
 import 'package:union/widgets/default/default_text.dart';
 
 class DefaultButton extends StatelessWidget {
@@ -9,7 +8,7 @@ class DefaultButton extends StatelessWidget {
       required this.backgroundColor,
       required this.text,
       required this.textSize,
-      this.textColor = white,
+      this.textColor = Colors.white,
       this.onPressed})
       : super(key: key);
 

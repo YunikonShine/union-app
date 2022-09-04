@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
-import 'package:union/util/constants/text_size.dart';
-import 'package:union/util/constants/texts.dart';
 import 'package:union/widgets/default/default_container.dart';
 import 'package:union/widgets/default/default_text.dart';
 import 'package:union/widgets/initial_icon.dart';
@@ -16,15 +14,15 @@ class FirstView1 extends StatelessWidget {
       backgroundColor: primaryBlue,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          const InitialIcon(
+        children: const <Widget>[
+          InitialIcon(
             iconImage: appImage,
           ),
           DefaultContainer(
             childrenList: <Widget>[
               DefaultText(
-                text: initialText1,
-                size: TextSize.big,
+                text: "Olá! Somos a Union, um grupo independente que tem como objetivo ajudar as pessoas",
+                size: 30,
               ),
             ],
           ),

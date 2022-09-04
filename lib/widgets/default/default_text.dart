@@ -3,7 +3,7 @@ import 'package:union/util/constants/colors.dart';
 
 class DefaultText extends StatelessWidget {
   const DefaultText(
-      {Key? key, required this.text, required this.size, this.color = white})
+      {Key? key, required this.text, required this.size, this.color = Colors.white})
       : super(key: key);
 
   final String text;

@@ -40,7 +40,7 @@ class DefaultDrawerButton extends StatelessWidget {
               child: Text(
                 text,
                 style: const TextStyle(
-                  color: white,
+                  color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),

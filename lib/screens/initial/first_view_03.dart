@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:union/util/constants/border_radius_size.dart';
 import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
-import 'package:union/util/constants/text_size.dart';
-import 'package:union/util/constants/texts.dart';
 
 import 'package:union/routes_names.dart';
 import 'package:union/widgets/default/default_button.dart';
@@ -27,9 +24,9 @@ class FirstView3 extends StatelessWidget {
           ),
           DefaultContainer(
             childrenList: <Widget>[
-              DefaultText(
-                text: initialText3,
-                size: TextSize.big,
+              const DefaultText(
+                text: "Vamos lá?",
+                size: 30,
               ),
               Container(
                 margin: const EdgeInsets.only(
@@ -40,8 +37,8 @@ class FirstView3 extends StatelessWidget {
                 child: DefaultButton(
                   backgroundColor: secundaryBlue,
                   text: "Login",
-                  borderRadius: BorderRadiusSize.normal,
-                  textSize: TextSize.normal,
+                  borderRadius: 15,
+                  textSize: 25,
                   onPressed: () {
                     Navigator.pushNamed(context, loginRoute);
                   },
@@ -52,9 +49,9 @@ class FirstView3 extends StatelessWidget {
                   top: 20.0,
                   bottom: 10.0,
                 ),
-                child: DefaultText(
+                child: const DefaultText(
                   text: "ou",
-                  size: TextSize.big,
+                  size: 30,
                 ),
               ),
               Container(
@@ -62,10 +59,10 @@ class FirstView3 extends StatelessWidget {
                 width: 250.0,
                 height: 65.0,
                 child: DefaultButton(
-                  backgroundColor: white,
-                  borderRadius: BorderRadiusSize.normal,
+                  backgroundColor: Colors.white,
+                  borderRadius: 15,
                   text: "Cadastre-se",
-                  textSize: TextSize.normal,
+                  textSize: 25,
                   textColor: secundaryBlue,
                   onPressed: () {
                     Navigator.pushNamed(context, userTypeRoute);

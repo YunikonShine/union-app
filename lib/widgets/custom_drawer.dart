@@ -5,7 +5,6 @@ import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
-import 'package:union/util/constants/text_size.dart';
 import 'package:union/widgets/default/default_drawer_button.dart';
 import 'package:union/widgets/default/default_text.dart';
 
@@ -151,9 +150,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 child: Column(
                   children: [
-                    DefaultText(
+                    const DefaultText(
                       text: "Precisa de ajuda?",
-                      size: TextSize.small,
+                      size: 20,
                     ),
                     GestureDetector(
                       onTap: () {
@@ -187,7 +186,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
         gradient: LinearGradient(
           colors: [
             primaryBlue,
-            white,
+            Colors.white,
           ],
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
