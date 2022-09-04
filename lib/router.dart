@@ -5,6 +5,7 @@ import 'package:union/screens/cvv/cvv.dart';
 import 'package:union/screens/donation/donate.dart';
 import 'package:union/screens/error_report/error_report.dart';
 import 'package:union/screens/initial/first_view.dart';
+import 'package:union/screens/initial/loading.dart';
 import 'package:union/screens/login/login.dart';
 import 'package:union/screens/profile/profile.dart';
 import 'package:union/screens/register/password_recovey/password_recovery.dart';
@@ -36,6 +37,8 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
   //     ? routeSettings.arguments
   //     : null;
   switch (routeSettings.name) {
+    case loadingRoute:
+      return MaterialPageRoute(builder: (context) => const Loading());
     case firstViewRoute:
       return MaterialPageRoute(builder: (context) => const FirstPage());
     case userTypeRoute:

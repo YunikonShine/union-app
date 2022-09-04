@@ -117,7 +117,7 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
   @override
   void dispose() {
     // WidgetsBinding.instance.removeObserver(this);
-    // super.dispose();
+    super.dispose();
   }
 
   @override

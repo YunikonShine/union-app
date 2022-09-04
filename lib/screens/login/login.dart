@@ -4,7 +4,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
+import 'package:union/model/user.dart';
 import 'package:union/services/auth_service.dart';
+import 'package:union/services/user_service.dart';
 import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/routes_names.dart';
@@ -24,13 +26,19 @@ class _LoginState extends State<Login> {
   final FocusNode passwordFocus = FocusNode();
 
   final _formKey = GlobalKey<FormState>();
+
   final AuthService authService = AuthService();
+  final UserService userService = UserService();
 
   final storage = const FlutterSecureStorage();
 
   @override
   void initState() {
     super.initState();
+    storage.write(
+      key: "firstOpen",
+      value: "false",
+    );
     // FirebaseAnalytics().setCurrentScreen(screenName: LoginRoute);
     // Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     // _prefs.then((prefs) {
@@ -131,35 +139,28 @@ class _LoginState extends State<Login> {
                     //await googleService.getUser();
                     if (_formKey.currentState!.validate()) {
                       AlertDialogMessage.showLoading(context);
-                      Response authResponse = await authService.login(
+
+                      bool authResponse = await authService.login(
                           emailController.text, passwordController.text);
-                      switch (authResponse.statusCode) {
-                        case 200:
-                          var data = jsonDecode(authResponse.body);
-                          storage.write(
-                            key: "token",
-                            value: data['token'],
-                          );
-                          storage.write(
-                            key: "refreshToken",
-                            value: data['refreshToken'],
-                          );
-                          Navigator.pushReplacementNamed(
+
+                      if (authResponse) {
+                        bool userData = await userService.getUserData();
+                        if (userData) {
+                          await Navigator.pushReplacementNamed(
                               context, psychologistListRoute);
-                          break;
-                        default:
-                          AlertDialogMessage.showDialogMessage(
-                            "Oops...",
-                            "Email e/ou senha incorretos",
-                            "OK",
-                            context,
-                            () {
-                              Navigator.pop(context);
-                              Navigator.pop(context);
-                            },
-                          );
-                          break;
+                        }
                       }
+
+                      AlertDialogMessage.showDialogMessage(
+                        "Oops...",
+                        "Email e/ou senha incorretos",
+                        "OK",
+                        context,
+                        () {
+                          Navigator.pop(context);
+                          Navigator.pop(context);
+                        },
+                      );
                       // int status = await login(
                       //     emailController.text, passwordController.text);
                       // Navigator.pop(context);

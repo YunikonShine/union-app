@@ -1,6 +1,10 @@
 // import 'package:flutter/cupertino.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/util/constants/images.dart';
 // import 'package:get_it/get_it.dart';
@@ -14,10 +18,22 @@ import 'package:union/util/constants/images.dart';
 
 import 'alert_dialog_message.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({Key? key}) : super(key: key);
 
-  // final User user;
+  @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  final storage = const FlutterSecureStorage();
+
+  final User user = User();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   // CustomDrawer(this.user);
 
@@ -48,6 +64,8 @@ class CustomDrawer extends StatelessWidget {
                         // GetIt.instance<DatabaseService>().execute(
                         //     "UPDATE _auth SET enabled = 0 WHERE enabled = 1");
                         // cleanJWT();
+                        storage.delete(key: "token");
+                        storage.delete(key: "refreshToken");
                         AlertDialogMessage.showDialogMessage(
                           "Obrigado!",
                           "Muito obrigado por utilizar a Union, esperamos ter "
@@ -55,8 +73,8 @@ class CustomDrawer extends StatelessWidget {
                           "OK",
                           context,
                           () {
-                            // Navigator.pushNamedAndRemoveUntil(context, LoginRoute,
-                            //     (Route<dynamic> route) => false);
+                            Navigator.pushNamedAndRemoveUntil(context,
+                                loginRoute, (Route<dynamic> route) => false);
                           },
                         );
                       },
@@ -65,10 +83,7 @@ class CustomDrawer extends StatelessWidget {
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
-                      Navigator.pushNamed(
-                        context,
-                        profileRoute
-                      );
+                      Navigator.pushNamed(context, profileRoute);
                     },
                     child: Padding(
                       padding: const EdgeInsets.only(top: 50.0),
@@ -105,11 +120,11 @@ class CustomDrawer extends StatelessWidget {
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0, left: 20.0, right: 20.0),
                 child: Text(
-                  "Nome do usuário",
-                  style: TextStyle(
+                  user.name,
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
                   ),

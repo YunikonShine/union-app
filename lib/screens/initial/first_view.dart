@@ -2,13 +2,17 @@
 // import 'dart:math';
 
 // import 'package:firebase_analytics/firebase_analytics.dart';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/screens/initial/dots_indicator.dart';
 import 'package:union/screens/initial/first_view_01.dart';
 import 'package:union/screens/initial/first_view_02.dart';
 import 'package:union/screens/initial/first_view_03.dart';
+import 'package:union/services/user_service.dart';
 // import 'package:get_it/get_it.dart';
 // import 'package:permissions_plugin/permissions_plugin.dart';
 // import 'package:shared_preferences/shared_preferences.dart';
@@ -36,15 +40,10 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
-  final storage = const FlutterSecureStorage();
 
   @override
   void initState() {
     super.initState();
-    storage.read(key: "token").then((token) => {
-          if (token!.isNotEmpty)
-            Navigator.pushReplacementNamed(context, psychologistListRoute)
-        });
 
     // FirebaseAnalytics().setCurrentScreen(screenName: FirstViewRoute);
     //databaseService.dropDatabase();

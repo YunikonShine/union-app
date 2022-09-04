@@ -1,3 +1,4 @@
+const String loadingRoute = "Loading";
 const String firstViewRoute = "FirstView";
 const String userTypeRoute = "UserType";
 const String registerCommonAvatarRoute = "RegisterCommonAvatar";
