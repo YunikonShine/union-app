@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:share/share.dart';
 import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
+import 'package:union/services/auth_service.dart';
 import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_drawer_button.dart';
@@ -19,6 +21,7 @@ class CustomDrawer extends StatefulWidget {
 
 class _CustomDrawerState extends State<CustomDrawer> {
   final storage = const FlutterSecureStorage();
+  final AuthService _authService = AuthService();
 
   final User user = User();
 
@@ -51,8 +54,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       icon: const Icon(FontAwesomeIcons.arrowRightFromBracket),
                       color: Colors.red,
                       onPressed: () async {
-                        storage.delete(key: "token");
-                        storage.delete(key: "refreshToken");
+                        _authService.logout();
                         AlertDialogMessage.showDialogMessage(
                           "Obrigado!",
                           "Muito obrigado por utilizar a Union, esperamos ter "
@@ -124,9 +126,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 text: "Compartilhar App",
                 icon: FontAwesomeIcons.heart,
                 onTap: () {
-                  // Share.share(
-                  //     'Olá, nós somos a Union, que tal fazer parte desse novo projeto? ❤️❤️❤️ https://play.google.com/store/apps/details?id=br.com.byron.union');
-                  // shareUpdate();
+                  Share.share(
+                      'Olá, nós somos a Union, que tal fazer parte desse novo projeto? ❤️❤️❤️ https://play.google.com/store/apps/details?id=br.com.byron.union');
                 },
               ),
               const DefaultDrawerButton(

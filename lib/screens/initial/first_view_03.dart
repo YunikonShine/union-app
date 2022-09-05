@@ -38,6 +38,7 @@ class FirstView3 extends StatelessWidget {
                   backgroundColor: secundaryBlue,
                   text: "Login",
                   textSize: 25,
+                  textColor: Colors.white,
                   onPressed: () {
                     Navigator.pushNamed(context, loginRoute);
                   },
@@ -63,7 +64,7 @@ class FirstView3 extends StatelessWidget {
                   textSize: 25,
                   textColor: secundaryBlue,
                   onPressed: () {
-                    Navigator.pushNamed(context, userTypeRoute);
+                    Navigator.pushNamed(context, registerCommonAvatarRoute);
                   },
                 ),
               ),

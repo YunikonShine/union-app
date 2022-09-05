@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:union/util/constants/colors.dart';
-import 'package:union/widgets/default/default_text.dart';
 
 class DefaultDrawerButton extends StatelessWidget {
   const DefaultDrawerButton(

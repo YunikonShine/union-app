@@ -39,6 +39,12 @@ class AuthService {
     return false;
   }
 
+  void logout() {
+    storage.delete(key: "token");
+    storage.delete(key: "refreshToken");
+    storage.delete(key: "tokenExpirationDate");
+  }
+
   Future<bool> refreshToken() async {
     Uri tokenRefreshUri = Uri.parse('${Constants.basePublicURL}/token/refresh');
     String? refreshToken = await storage.read(key: "refreshToken");

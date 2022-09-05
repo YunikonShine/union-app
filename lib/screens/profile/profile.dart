@@ -133,7 +133,7 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xff14bed8),
+        backgroundColor: primaryBlue,
         centerTitle: true,
         title: Container(
           width: 50.0,
@@ -146,7 +146,7 @@ class _ProfileState extends State<Profile> {
           ),
         ),
       ),
-      backgroundColor: const Color(0xff14bed8),
+      backgroundColor: primaryBlue,
       drawer: const CustomDrawer(),
       body: SingleChildScrollView(
         child: Center(

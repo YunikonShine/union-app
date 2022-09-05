@@ -18,7 +18,6 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
   @override
   void initState() {
     super.initState();
-    // FirebaseAnalytics().setCurrentScreen(screenName: RegisterCommonAvatarRoute);
   }
 
   List<AssetImage> images = [manPerson, womanPerson];
@@ -32,10 +31,8 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.only(
-              //left: MediaQuery.of(context).size.width * 0.1,
-              //right: MediaQuery.of(context).size.width * 0.1,
-              top: MediaQuery.of(context).size.height * 0.05),
+          margin:
+              EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.08),
           child: Column(
             children: <Widget>[
               const Text(
