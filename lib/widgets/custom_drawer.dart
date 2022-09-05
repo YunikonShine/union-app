@@ -8,7 +8,6 @@ import 'package:union/services/auth_service.dart';
 import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_drawer_button.dart';
-import 'package:union/widgets/default/default_text.dart';
 
 import 'alert_dialog_message.dart';
 
@@ -151,9 +150,14 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 ),
                 child: Column(
                   children: [
-                    const DefaultText(
-                      text: "Precisa de ajuda?",
-                      size: 20,
+                    const Text(
+                      "Precisa de ajuda?",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        height: 1.3,
+                      ),
                     ),
                     GestureDetector(
                       onTap: () {

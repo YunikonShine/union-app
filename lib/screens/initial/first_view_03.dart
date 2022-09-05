@@ -4,8 +4,6 @@ import 'package:union/util/constants/images.dart';
 
 import 'package:union/routes_names.dart';
 import 'package:union/widgets/default/default_button.dart';
-import 'package:union/widgets/default/default_container.dart';
-import 'package:union/widgets/default/default_text.dart';
 import 'package:union/widgets/initial_icon.dart';
 
 class FirstView3 extends StatelessWidget {
@@ -22,19 +20,24 @@ class FirstView3 extends StatelessWidget {
             iconImage: dialog,
             mini: true,
           ),
-          DefaultContainer(
-            childrenList: <Widget>[
-              const DefaultText(
-                text: "Vamos lá?",
-                size: 30,
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 40.0,
+          Container(
+            width: MediaQuery.of(context).size.width,
+            margin: const EdgeInsets.only(top: 25.0, left: 10.0, right: 10.0),
+            child: Column(
+              children: <Widget>[
+                const Text(
+                  "Vamos lá?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    height: 1.3,
+                  ),
                 ),
-                width: 250.0,
-                height: 65.0,
-                child: DefaultButton(
+                DefaultButton(
+                  margin: const EdgeInsets.only(top: 40.0),
+                  width: 250.0,
+                  height: 65.0,
                   backgroundColor: secundaryBlue,
                   text: "Login",
                   textSize: 25,
@@ -43,22 +46,21 @@ class FirstView3 extends StatelessWidget {
                     Navigator.pushNamed(context, loginRoute);
                   },
                 ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(
-                  top: 20.0,
-                  bottom: 10.0,
+                Container(
+                  margin: const EdgeInsets.only(top: 25.0, bottom: 25.0),
+                  child: const Text(
+                    "ou",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                      height: 1.3,
+                    ),
+                  ),
                 ),
-                child: const DefaultText(
-                  text: "ou",
-                  size: 30,
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.only(top: 20.0),
-                width: 250.0,
-                height: 65.0,
-                child: DefaultButton(
+                DefaultButton(
+                  width: 250.0,
+                  height: 65.0,
                   backgroundColor: Colors.white,
                   text: "Cadastre-se",
                   textSize: 25,
@@ -67,8 +69,8 @@ class FirstView3 extends StatelessWidget {
                     Navigator.pushNamed(context, registerCommonAvatarRoute);
                   },
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
