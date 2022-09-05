@@ -20,4 +20,31 @@ class UserService {
     }
     return false;
   }
+
+  Future<bool> updateUser(Map<String, dynamic> user) async {
+    Uri loginUri = Uri.parse('${Constants.baseApiURL}/user');
+    Response response = await client.put(loginUri, body: jsonEncode(user));
+    if (response.statusCode == 204) {
+      return await getUserData();
+    }
+    return false;
+  }
+
+  Future<bool> checkOldPassword(Map<String, dynamic> oldPassword) async {
+    Uri loginUri = Uri.parse('${Constants.baseApiURL}/user/password/check');
+    Response response = await client.post(loginUri, body: jsonEncode(oldPassword));
+    if (response.statusCode == 200) {
+      return true;
+    }
+    return false;
+  }
+
+  Future<bool> updatePassword(Map<String, dynamic> password) async {
+    Uri loginUri = Uri.parse('${Constants.baseApiURL}/user/password');
+    Response response = await client.put(loginUri, body: jsonEncode(password));
+    if (response.statusCode == 204) {
+      return true;
+    }
+    return false;
+  }
 }

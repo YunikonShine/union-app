@@ -37,7 +37,6 @@ class FirstView3 extends StatelessWidget {
                 child: DefaultButton(
                   backgroundColor: secundaryBlue,
                   text: "Login",
-                  borderRadius: 15,
                   textSize: 25,
                   onPressed: () {
                     Navigator.pushNamed(context, loginRoute);
@@ -60,7 +59,6 @@ class FirstView3 extends StatelessWidget {
                 height: 65.0,
                 child: DefaultButton(
                   backgroundColor: Colors.white,
-                  borderRadius: 15,
                   text: "Cadastre-se",
                   textSize: 25,
                   textColor: secundaryBlue,

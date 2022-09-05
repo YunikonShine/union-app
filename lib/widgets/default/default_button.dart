@@ -1,43 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:union/util/constants/colors.dart';
 import 'package:union/widgets/default/default_text.dart';
 
 class DefaultButton extends StatelessWidget {
-  const DefaultButton(
-      {Key? key,
-      required this.borderRadius,
-      required this.backgroundColor,
-      required this.text,
-      required this.textSize,
-      this.textColor = Colors.white,
-      this.onPressed})
-      : super(key: key);
+  const DefaultButton({
+    Key? key,
+    required this.text,
+    required this.onPressed,
+    this.height = 50,
+    this.width = 250,
+    this.margin,
+    this.backgroundColor = Colors.white,
+    this.textSize = 18,
+    this.textColor = secundaryBlue,
+  }) : super(key: key);
 
-  final double borderRadius;
-  final Color backgroundColor;
   final String text;
+  final VoidCallback onPressed;
+
+  final double height;
+  final double width;
+  final EdgeInsetsGeometry? margin;
+
   final double textSize;
   final Color textColor;
-  final VoidCallback? onPressed;
+
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius),
+    return Container(
+      height: height,
+      width: width,
+      margin: margin,
+      child: ElevatedButton(
+        style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+          ),
+          backgroundColor: MaterialStateProperty.all<Color>(
+            backgroundColor,
           ),
         ),
-        backgroundColor: MaterialStateProperty.all<Color>(
-          backgroundColor,
+        child: DefaultText(
+          text: text,
+          size: textSize,
+          color: textColor,
         ),
+        onPressed: onPressed,
       ),
-      child: DefaultText(
-        text: text,
-        size: textSize,
-        color: textColor,
-      ),
-      onPressed: onPressed,
     );
   }
 }

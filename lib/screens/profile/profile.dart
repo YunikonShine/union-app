@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
+import 'package:union/services/user_service.dart';
+import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/alert_dialog_message.dart';
 import 'package:union/widgets/custom_drawer.dart';
+import 'package:union/widgets/default/default_button.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/widgets/pointed_separator.dart';
 
@@ -16,6 +19,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
+  final UserService _userService = UserService();
   final User user = User();
   final dateFormat = DateFormat('dd/MM/yyyy');
 
@@ -48,6 +52,82 @@ class _ProfileState extends State<Profile> {
   FocusNode confirmPasswordFocus = FocusNode();
 
   final _formKeyPassword = GlobalKey<FormState>();
+
+  _updateUser() async {
+    var user = {
+      'name': nameController.text,
+    };
+    AlertDialogMessage.showLoading(context);
+    bool updateUser = await _userService.updateUser(user);
+    if (updateUser) {
+      AlertDialogMessage.showDialogMessage(
+        "Sucesso!!!",
+        "Os seus dados foram atualizados com sucesso",
+        "OK",
+        context,
+        () {
+          Navigator.pushNamedAndRemoveUntil(
+              context, psychologistListRoute, (Route<dynamic> route) => false);
+        },
+      );
+    } else {
+      AlertDialogMessage.showDialogMessage(
+        "Opps...",
+        "Nos desculpe, parece que tivemos problemas com o nosso sistema, tente novamente mais tarde",
+        "OK",
+        context,
+        () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      );
+    }
+  }
+
+  _updatePassword() async {
+    var password = {
+      'oldPassword': oldPasswordController.text,
+      'password': passwordController.text,
+    };
+    AlertDialogMessage.showLoading(context);
+    bool checkOldPassword = await _userService.checkOldPassword(password);
+    if (checkOldPassword) {
+      bool updatePassword = await _userService.updatePassword(password);
+      if (updatePassword) {
+        AlertDialogMessage.showDialogMessage(
+            "Sucesso!!!",
+            "Sua senha foi atualizada com sucesso\n"
+                "Agora você precisará realizar o login novamente",
+            "OK",
+            context, () {
+          Navigator.pushNamedAndRemoveUntil(
+              context, loginRoute, (Route<dynamic> route) => false);
+        });
+      } else {
+        AlertDialogMessage.showDialogMessage(
+          "Opps...",
+          "Nos desculpe, parece que tivemos problemas com o nosso sistema, tente novamente mais tarde",
+          "OK",
+          context,
+          () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      }
+    } else {
+      AlertDialogMessage.showDialogMessage(
+        "Opps...",
+        "Sua senha antiga não está correta",
+        "OK",
+        context,
+        () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,74 +202,13 @@ class _ProfileState extends State<Profile> {
                         controller: emailController,
                         removeDefaultMargin: true,
                       ),
-                      SizedBox(
-                        width: 250.0,
-                        height: 50.0,
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.white,
-                            ),
-                          ),
-                          child: const Text(
-                            "Atualizar dados",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Color(0xff1b8dcb),
-                            ),
-                          ),
-                          onPressed: () async {
-                            // if (_formKeyData.currentState.validate()) {
-                            //   User user = User();
-                            //   user.name = nameController.text;
-                            //   AlertDialogMessage.showLoading(context);
-                            //   http.Response response = await updateUser(user);
-                            //   Navigator.pop(context);
-                            //   if (response.statusCode ==
-                            //       HttpStatus.noContent) {
-                            //     setNameUserLogged(user.name);
-                            AlertDialogMessage.showDialogMessage(
-                                "Sucesso!!!",
-                                "Os seus dados foram atualizados com sucesso",
-                                "OK",
-                                context, () {
-                              Navigator.pop(context);
-                            });
-                            //   } else if (response.statusCode ==
-                            //       HttpStatus.badRequest) {
-                            //     var decodedUTF = const Utf8Decoder()
-                            //         .convert(response.bodyBytes);
-                            //     Map jsonResponse = json.decode(decodedUTF);
-                            //     String message = "";
-                            //     List<dynamic> errors = jsonResponse["errors"];
-                            //     for (int i = 0; i < errors.length; i++) {
-                            //       Map jsonMessage = errors[i];
-                            //       message +=
-                            //           "${jsonMessage["defaultMessage"]}\n";
-                            //     }
-                            //     AlertDialogMessage.showDialogMessage(
-                            //         "Opps...", message, "OK", context, () {
-                            //       Navigator.pop(context);
-                            //     });
-                            //   } else {
-                            //     AlertDialogMessage.showDialogMessage(
-                            //         "Opps...",
-                            //         "Nos desculpe, parece que tivemos problemas "
-                            //             "com o nosso sistema, tente novamente mais tarde",
-                            //         "OK",
-                            //         context, () {
-                            //       Navigator.pop(context);
-                            //     });
-                            //   }
-                            // }
-                          },
-                        ),
+                      DefaultButton(
+                        text: "Atualizar dados",
+                        onPressed: () async {
+                          if (_formKeyData.currentState!.validate()) {
+                            await _updateUser();
+                          }
+                        },
                       ),
                     ],
                   ),
@@ -223,6 +242,8 @@ class _ProfileState extends State<Profile> {
                         validator: (value) {
                           if (value!.isEmpty) {
                             return "A nova senha é obrigatória";
+                          } else if (value.length < 8) {
+                            return "A nova senha deve ter no mínimo 8 caracteres";
                           }
                           return null;
                         },
@@ -242,79 +263,14 @@ class _ProfileState extends State<Profile> {
                           return null;
                         },
                       ),
-                      Container(
-                        width: 250.0,
-                        height: 50.0,
-                        margin: const EdgeInsets.only(top: 5.0, bottom: 15.0),
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                            ),
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              Colors.white,
-                            ),
-                          ),
-                          child: const Text(
-                            "Atualizar senha",
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Color(0xff1b8dcb),
-                            ),
-                          ),
-                          onPressed: () async {
-                            // if (_formKeyPassword.currentState.validate()) {
-                            //   User user = User();
-                            //   user.password = passwordController.text;
-                            //   user.oldPassword = oldPasswordController.text;
-                            //   AlertDialogMessage.showLoading(context);
-                            //   http.Response response =
-                            //       await updateUserPassword(user);
-                            //   Navigator.pop(context);
-                            //   if (response.statusCode ==
-                            //       HttpStatus.noContent) {
-                            //     setNameUserLogged(user.name);
-                            AlertDialogMessage.showDialogMessage(
-                                "Sucesso!!!",
-                                "Sua senha foi atualizada com sucesso\n"
-                                    "Agora você precisa realizar o login novamente",
-                                "OK",
-                                context, () {
-                              Navigator.pushNamedAndRemoveUntil(context,
-                                  loginRoute, (Route<dynamic> route) => false);
-                            });
-                            //   } else if (response.statusCode ==
-                            //       HttpStatus.badRequest) {
-                            //     var decodedUTF = const Utf8Decoder()
-                            //         .convert(response.bodyBytes);
-                            //     Map jsonResponse = json.decode(decodedUTF);
-                            //     String message = "";
-                            //     List<dynamic> errors = jsonResponse["errors"];
-                            //     for (int i = 0; i < errors.length; i++) {
-                            //       Map jsonMessage = errors[i];
-                            //       message +=
-                            //           "${jsonMessage["defaultMessage"]}\n";
-                            //     }
-                            //     AlertDialogMessage.showDialogMessage(
-                            //         "Opps...", message, "OK", context, () {
-                            //       Navigator.pop(context);
-                            //     });
-                            //   } else {
-                            //     AlertDialogMessage.showDialogMessage(
-                            //         "Opps...",
-                            //         "Nos desculpe, parece que tivemos problemas "
-                            //             "com o nosso sistema, tente novamente mais tarde",
-                            //         "OK",
-                            //         context, () {
-                            //       Navigator.pop(context);
-                            //     });
-                            //   }
-                            // }
-                          },
-                        ),
+                      DefaultButton(
+                        text: "Atualizar senha",
+                        margin: const EdgeInsets.only(bottom: 15),
+                        onPressed: () async {
+                          if (_formKeyPassword.currentState!.validate()) {
+                            await _updatePassword();
+                          }
+                        },
                       ),
                     ],
                   ),
