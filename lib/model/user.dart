@@ -7,12 +7,12 @@ class User {
   String? password;
   String? description;
 
-  static final User _user = User._internal();
+  static final Map<String, User> _cache = <String, User>{};
 
-  User._internal();
+  User();
 
-  factory User() {
-    return _user;
+  factory User.cached(String cacheName) {
+     return _cache.putIfAbsent(cacheName, () => User());
   }
 
   String _getDate() {

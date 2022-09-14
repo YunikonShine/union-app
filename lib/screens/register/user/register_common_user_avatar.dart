@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/util/constants/colors.dart';
-import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_button.dart';
 
 class RegisterCommonUserAvatar extends StatefulWidget {
@@ -20,7 +19,7 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
     super.initState();
   }
 
-  User user = User();
+  User user = User.cached("register");
 
   List<String> images = ["man_person.png", "woman_person.png"];
 

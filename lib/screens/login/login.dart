@@ -199,7 +199,7 @@ class _LoginState extends State<Login> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      Navigator.pushNamed(context, userTypeRoute);
+                      Navigator.pushNamed(context, registerCommonAvatarRoute);
                     },
                     child: Container(
                       height: 50.0,

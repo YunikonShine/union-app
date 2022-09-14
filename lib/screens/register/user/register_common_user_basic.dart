@@ -6,7 +6,6 @@ import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/services/user_service.dart';
 import 'package:union/util/constants/colors.dart';
-import 'package:union/util/constants/images.dart';
 import 'package:union/widgets/default/default_button.dart';
 import 'package:union/widgets/default/default_text_field.dart';
 import 'package:union/widgets/alert_dialog_message.dart';
@@ -26,7 +25,7 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
     super.initState();
   }
 
-  User user = User();
+  User user = User.cached("register");
   final UserService _userService = UserService();
 
   bool genderError = false;

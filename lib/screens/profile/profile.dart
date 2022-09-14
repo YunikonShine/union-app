@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:union/model/logged_user.dart';
+import 'package:union/model/password.dart';
+import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/services/user_service.dart';
 import 'package:union/util/constants/colors.dart';
@@ -54,9 +56,9 @@ class _ProfileState extends State<Profile> {
   final _formKeyPassword = GlobalKey<FormState>();
 
   _updateUser() async {
-    var user = {
-      'name': nameController.text,
-    };
+    User user = User();
+    user.name = nameController.text;
+
     AlertDialogMessage.showLoading(context);
     bool updateUser = await _userService.updateUser(user);
     if (updateUser) {
@@ -85,10 +87,10 @@ class _ProfileState extends State<Profile> {
   }
 
   _updatePassword() async {
-    var password = {
-      'oldPassword': oldPasswordController.text,
-      'password': passwordController.text,
-    };
+    Password password = Password();
+    password.oldPassword = oldPasswordController.text;
+    password.password = passwordController.text;
+    
     AlertDialogMessage.showLoading(context);
     bool checkOldPassword = await _userService.checkOldPassword(password);
     if (checkOldPassword) {
