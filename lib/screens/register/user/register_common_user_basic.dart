@@ -81,13 +81,9 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
     if (userSaved) {
       AlertDialogMessage.showDialogMessage(
           "Parabéns!!!",
-          "Você se cadastrou com succeso no projeto "
-              "Union, agora apenas precisamos que você "
-              "clique no botão do e-mail que acabamos "
-              "de enviar, só para garantir que você "
-              "não é um robô :) e não se esqueça "
-              "de olhar a caixa de spam\nMuito "
-              "obrigado por se cadastrar",
+          "Cadastro realizado com sucesso\n"
+              "Enviamos um email de confirmação para você\n"
+              "Muito obrigado por se cadastrar :)",
           "OK",
           context, () {
         Navigator.pushNamedAndRemoveUntil(
@@ -348,7 +344,8 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
                           } else {
                             AlertDialogMessage.showDialogMessage(
                                 "Opps...",
-                                "Um ou mais campos do cadastro estão incorretos\nPor favor, revise os campos",
+                                "Um ou mais campos do cadastro estão incorretos\n"
+                                    "Por favor, revise os campos",
                                 "OK",
                                 context, () {
                               Navigator.pop(context);
