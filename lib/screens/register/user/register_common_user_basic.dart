@@ -28,8 +28,6 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
   User user = User.cached("register");
   final UserService _userService = UserService();
 
-  bool genderError = false;
-
   TextEditingController nameController = TextEditingController();
   FocusNode nameFocus = FocusNode();
 
@@ -37,14 +35,8 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
   FocusNode bornFocus = FocusNode();
   DateTime bornDate = DateTime.now();
 
-  List<String> genderOptions = <String>[
-    "Gênero",
-    "Masculino",
-    "Feminino",
-    "Não binário",
-    "Fluido"
-  ];
-  String genderValue = "Gênero";
+  List<String> genderOptions = User.getGenders().keys.toList();
+  String genderValue = "Masculino";
   FocusNode genderFocus = FocusNode();
 
   TextEditingController emailController = TextEditingController();
@@ -98,9 +90,8 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
               "obrigado por se cadastrar",
           "OK",
           context, () {
-        Navigator.pop(context);
-        Navigator.pop(context);
-        Navigator.pushNamed(context, loadingRoute);
+        Navigator.pushNamedAndRemoveUntil(
+            context, loginRoute, (Route<dynamic> route) => false);
       });
     } else {
       AlertDialogMessage.showDialogMessage(
@@ -109,9 +100,8 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
               "com o nosso sistema, tente novamente mais tarde",
           "OK",
           context, () {
-        Navigator.pop(context);
-        Navigator.pop(context);
-        Navigator.pushNamed(context, loadingRoute);
+        Navigator.pushNamedAndRemoveUntil(
+            context, loginRoute, (Route<dynamic> route) => false);
       });
     }
   }
@@ -198,8 +188,7 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
                         },
                       ),
                       Container(
-                        margin:
-                            EdgeInsets.only(bottom: genderError ? 15.0 : 30.0),
+                        margin: const EdgeInsets.only(bottom: 30.0),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
@@ -210,10 +199,8 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
                               decoration: ShapeDecoration(
                                 shape: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: BorderSide(
-                                    color: genderError
-                                        ? primaryBlue
-                                        : Colors.white70,
+                                  borderSide: const BorderSide(
+                                    color: Colors.white70,
                                   ),
                                 ),
                               ),
@@ -255,19 +242,6 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
                                 ),
                               ),
                             ),
-                            genderError
-                                ? Container(
-                                    padding: const EdgeInsets.only(
-                                        left: 15.0, top: 10.0),
-                                    child: const Text(
-                                      "O gênero é obrigatório",
-                                      style: TextStyle(
-                                        color: colorError,
-                                        fontSize: 12.0,
-                                      ),
-                                    ),
-                                  )
-                                : Container(),
                           ],
                         ),
                       ),
@@ -369,17 +343,16 @@ class _RegisterCommonUserBasicState extends State<RegisterCommonUserBasic> {
                         margin: const EdgeInsets.only(bottom: 25),
                         text: "Registrar-se",
                         onPressed: () async {
-                          if (genderValue == genderOptions[0]) {
-                            setState(() {
-                              genderError = true;
-                            });
+                          if (_formKey.currentState!.validate()) {
+                            await _registerUser();
                           } else {
-                            setState(() {
-                              genderError = false;
+                            AlertDialogMessage.showDialogMessage(
+                                "Opps...",
+                                "Um ou mais campos do cadastro estão incorretos\nPor favor, revise os campos",
+                                "OK",
+                                context, () {
+                              Navigator.pop(context);
                             });
-                            if (_formKey.currentState!.validate()) {
-                              await _registerUser();
-                            }
                           }
                         },
                       ),

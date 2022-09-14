@@ -20,17 +20,7 @@ class User {
   }
 
   String _genderToEnum() {
-    switch (gender) {
-      case "Masculino":
-        return "M";
-      case "Feminino":
-        return "F";
-      case "Não binário":
-        return "N";
-      case "Fluido":
-        return "F";
-    }
-    return "";
+    return getGenders()[gender] ?? "";
   }
 
   Map<String, dynamic> toMap() {
@@ -42,6 +32,17 @@ class User {
       "gender": _genderToEnum(),
       "password": password,
       "description": description
+    };
+  }
+
+  static Map<String, String> getGenders() {
+    return {
+      "Masculino": "MALE",
+      "Feminino": "FEMALE",
+      "Não binário": "NON_BINARY",
+      "Fluido": "FLUID",
+      "Outro": "OTHER",
+      "Prefiro não responder": "NULL_RESPONSE",
     };
   }
 }
