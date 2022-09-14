@@ -4,7 +4,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
-import 'package:union/model/user.dart';
+import 'package:union/model/logged_user.dart';
 import 'package:union/services/auth_service.dart';
 import 'package:union/services/user_service.dart';
 import 'package:union/util/constants/images.dart';

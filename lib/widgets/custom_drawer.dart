@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:share/share.dart';
-import 'package:union/model/user.dart';
+import 'package:union/model/logged_user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/services/auth_service.dart';
 import 'package:union/util/constants/colors.dart';
@@ -22,7 +22,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
   final storage = const FlutterSecureStorage();
   final AuthService _authService = AuthService();
 
-  final User user = User();
+  final LoggedUser loggedUser = LoggedUser();
 
   @override
   void initState() {
@@ -81,7 +81,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           height: 100.0,
                           decoration: BoxDecoration(
                             image: DecorationImage(
-                              image: AssetImage("assets/images/${user.avatar}"),
+                              image: AssetImage("assets/images/${loggedUser.avatar}"),
                               fit: BoxFit.contain,
                             ),
                           ),
@@ -111,7 +111,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               Padding(
                 padding: const EdgeInsets.only(top: 15, bottom: 20),
                 child: Text(
-                  user.name,
+                  loggedUser.name,
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,

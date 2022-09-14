@@ -1,10 +1,10 @@
-// import 'package:firebase_analytics/firebase_analytics.dart';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:union/model/user.dart';
 import 'package:union/routes_names.dart';
+import 'package:union/util/constants/colors.dart';
 import 'package:union/util/constants/images.dart';
-// import 'package:union/domain/CommonUser.dart';
+import 'package:union/widgets/default/default_button.dart';
 
 class RegisterCommonUserAvatar extends StatefulWidget {
   const RegisterCommonUserAvatar({Key? key}) : super(key: key);
@@ -20,14 +20,16 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
     super.initState();
   }
 
-  List<AssetImage> images = [manPerson, womanPerson];
+  User user = User();
+
+  List<String> images = ["man_person.png", "woman_person.png"];
 
   int index = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff14bed8),
+      backgroundColor: primaryBlue,
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -107,7 +109,7 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
                           ),
                         ),
                         image: DecorationImage(
-                          image: images[0],
+                          image: AssetImage("assets/images/${images[0]}"),
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -134,7 +136,7 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
                           ),
                         ),
                         image: DecorationImage(
-                          image: images[1],
+                          image: AssetImage("assets/images/${images[1]}"),
                           fit: BoxFit.contain,
                         ),
                       ),
@@ -142,37 +144,18 @@ class _RegisterCommonUserAvatarState extends State<RegisterCommonUserAvatar> {
                   ),
                 ],
               ),
-              Container(
-                width: 250.0,
-                height: 50.0,
-                margin: const EdgeInsets.only(top: 50.0),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    )),
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Colors.white,
-                    ),
-                  ),
-                  child: const Text(
-                    "Próxima etapa >>",
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: Color(0xff1b8dcb),
-                    ),
-                  ),
-                  onPressed: () {
-                    // CommonUser commonUser = CommonUser();
-                    // commonUser.avatar = images[index];
-                    Navigator.pushNamed(
-                      context,
-                      registerCommonBasicRoute,
-                      // arguments: commonUser,
-                    );
-                  },
-                ),
+              DefaultButton(
+                text: "Próxima etapa >>",
+                margin: const EdgeInsets.only(top: 50),
+                onPressed: () {
+                  user.avatar = images[index];
+                  // CommonUser commonUser = CommonUser();
+                  // commonUser.avatar = images[index];
+                  Navigator.pushNamed(
+                    context,
+                    registerCommonBasicRoute,
+                  );
+                },
               ),
             ],
           ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:union/model/user.dart';
+import 'package:union/model/logged_user.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/services/user_service.dart';
 import 'package:union/util/constants/colors.dart';
@@ -20,14 +20,14 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final UserService _userService = UserService();
-  final User user = User();
+  final LoggedUser loggedUser = LoggedUser();
   final dateFormat = DateFormat('dd/MM/yyyy');
 
   @override
   void initState() {
-    nameController.text = user.name;
-    bornController.text = dateFormat.format(user.bornDate);
-    emailController.text = user.email;
+    nameController.text = loggedUser.name;
+    bornController.text = dateFormat.format(loggedUser.bornDate);
+    emailController.text = loggedUser.email;
     super.initState();
   }
 
@@ -165,9 +165,9 @@ class _ProfileState extends State<Profile> {
                           child: Container(
                             width: 100.0,
                             height: 100.0,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: manPerson,
+                                image: AssetImage("assets/images/${loggedUser.avatar}"),
                                 fit: BoxFit.contain,
                               ),
                             ),
@@ -244,6 +244,9 @@ class _ProfileState extends State<Profile> {
                             return "A nova senha é obrigatória";
                           } else if (value.length < 8) {
                             return "A nova senha deve ter no mínimo 8 caracteres";
+                          } else if (!RegExp(r'\d').hasMatch(value) ||
+                              !RegExp('[a-zA-Z]').hasMatch(value)) {
+                            return "A senha deve ter letras e números";
                           }
                           return null;
                         },

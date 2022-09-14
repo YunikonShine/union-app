@@ -1,29 +1,47 @@
 class User {
-  final String name;
-  final DateTime bornDate;
-  final String email;
-  final String avatar;
-  final String gender;
+  String? name;
+  DateTime? bornDate;
+  String? email;
+  String? avatar;
+  String? gender;
+  String? password;
+  String? description;
 
-  static User _cache = User();
+  static final User _user = User._internal();
 
-  User._internal(
-      this.name, this.bornDate, this.email, this.avatar, this.gender);
+  User._internal();
 
-  factory User.fromJson(Map<String, dynamic> json, {int id = 0}) {
-    User user = User._internal(
-        json['name'].toString(),
-        DateTime.parse(json['bornDate'].toString()),
-        json['email'].toString(),
-        json['avatar'].toString(),
-        json['gender'].toString());
-    return User(user: user);
+  factory User() {
+    return _user;
   }
 
-  factory User({User? user}) {
-    if (user != null) {
-      _cache = user;
+  String _getDate() {
+    return bornDate.toString().split(" ")[0];
+  }
+
+  String _genderToEnum() {
+    switch (gender) {
+      case "Masculino":
+        return "M";
+      case "Feminino":
+        return "F";
+      case "Não binário":
+        return "N";
+      case "Fluido":
+        return "F";
     }
-    return _cache;
+    return "";
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      "bornDate": _getDate(),
+      "email": email,
+      "avatar": avatar,
+      "gender": _genderToEnum(),
+      "password": password,
+      "description": description
+    };
   }
 }
