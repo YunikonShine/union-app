@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:union/routes_names.dart';
@@ -20,7 +21,16 @@ class _LoadingState extends State<Loading> {
   @override
   void initState() {
     super.initState();
+    _start();
+  }
+
+  _start() async {
+    await _initializeFirebase();
     _checkLogin();
+  }
+
+  _initializeFirebase() async {
+    await Firebase.initializeApp();
   }
 
   _checkLogin() async {

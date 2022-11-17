@@ -3,6 +3,9 @@ import 'dart:async';
 
 // import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
+import 'package:union/model/holder/object_holder.dart';
+import 'package:union/model/psychologist.dart';
+import 'package:union/services/firebase_chat.dart';
 import 'package:union/util/constants/images.dart';
 // import 'package:flutter/services.dart';
 // import 'package:get_it/get_it.dart';
@@ -42,10 +45,12 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final AssetImage userAvatar = manPerson;
-  final String userName = "Nome";
-  String userPublicKey = "key";
-  final String userHash = "123123123";
+  final Psychologist psychologist = ObjectHolder.currentChat!;
+
+  // final AssetImage userAvatar = manPerson;
+  // final String userName = "Nome";
+  // String userPublicKey = "key";
+  // final String userHash = "123123123";
   List<Widget> chatMessages = [];
 
 //  final String chatId;
@@ -138,7 +143,7 @@ class _ChatScreenState extends State<ChatScreen> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
-                  image: userAvatar,
+                  image: AssetImage("assets/images/${psychologist.avatar}"),
                   fit: BoxFit.contain,
                 ),
               ),
@@ -147,7 +152,7 @@ class _ChatScreenState extends State<ChatScreen> {
               width: MediaQuery.of(context).size.width * 0.5,
               padding: const EdgeInsets.only(left: 10.0),
               child: Text(
-                userName,
+                psychologist.name,
                 overflow: TextOverflow.fade,
                 maxLines: 1,
                 softWrap: false,
@@ -157,83 +162,83 @@ class _ChatScreenState extends State<ChatScreen> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: 
-      // _stompClient == null || !allMessages || userPublicKey == null
-      //     ? const Center(
-      //         child: CircularProgressIndicator(),
-      //       )
-      //     : 
+      body:
+          // _stompClient == null || !allMessages || userPublicKey == null
+          //     ? const Center(
+          //         child: CircularProgressIndicator(),
+          //       )
+          //     :
           SingleChildScrollView(
-              child: Column(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: MediaQuery.of(context).viewInsets.bottom > 0
+                  ? MediaQuery.of(context).size.height * 0.78 -
+                      MediaQuery.of(context).viewInsets.bottom
+                  : MediaQuery.of(context).size.height * 0.78,
+              child: ListView.builder(
+                controller: scrollController,
+                reverse: false,
+                padding:
+                    const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
+                itemCount: chatMessages.length,
+                itemBuilder: (context, index) {
+                  return chatMessages[index];
+                },
+              ),
+            ),
+            Container(
+              //height: 60.0,
+              margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 15.0),
+              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color(0xffdbdbdb),
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(50.0),
+                ),
+              ),
+              child: Row(
                 children: <Widget>[
-                  SizedBox(
-                    height: MediaQuery.of(context).viewInsets.bottom > 0
-                        ? MediaQuery.of(context).size.height * 0.78 -
-                            MediaQuery.of(context).viewInsets.bottom
-                        : MediaQuery.of(context).size.height * 0.78,
-                    child: ListView.builder(
-                      controller: scrollController,
-                      reverse: false,
-                      padding:
-                          const EdgeInsets.only(left: 10.0, right: 10.0, top: 10.0),
-                      itemCount: chatMessages.length,
-                      itemBuilder: (context, index) {
-                        return chatMessages[index];
-                      },
+                  Expanded(
+                    child: Theme(
+                      data: ThemeData(
+                        hintColor: Colors.black,
+                        primaryColor: Colors.black,
+                      ),
+                      child: TextField(
+                        controller: textEditingController,
+                        style: const TextStyle(
+                          color: Colors.black,
+                        ),
+                        decoration: const InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Digite sua mensagem aqui...",
+                        ),
+                        focusNode: inputFieldNode,
+                        onSubmitted: (text) async {
+                          inputFieldNode.requestFocus();
+                          await _sendMessage(text);
+                        },
+                      ),
                     ),
                   ),
-                  Container(
-                    //height: 60.0,
-                    margin: const EdgeInsets.only(left: 10.0, right: 10.0, top: 15.0),
-                    padding: const EdgeInsets.only(left: 10.0, right: 10.0),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color(0xffdbdbdb),
-                      ),
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(50.0),
-                      ),
+                  IconButton(
+                    icon: const Icon(
+                      Icons.subdirectory_arrow_right,
+                      color: Color(0xffdbdbdb),
                     ),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          child: Theme(
-                            data: ThemeData(
-                              hintColor: Colors.black,
-                              primaryColor: Colors.black,
-                            ),
-                            child: TextField(
-                              controller: textEditingController,
-                              style: const TextStyle(
-                                color: Colors.black,
-                              ),
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Digite sua mensagem aqui...",
-                              ),
-                              focusNode: inputFieldNode,
-                              onSubmitted: (text) async {
-                                inputFieldNode.requestFocus();
-                                await _sendMessage(text);
-                              },
-                            ),
-                          ),
-                        ),
-                        IconButton(
-                          icon: const Icon(
-                            Icons.subdirectory_arrow_right,
-                            color: Color(0xffdbdbdb),
-                          ),
-                          onPressed: () async {
-                            await _sendMessage(textEditingController.text);
-                          },
-                        ),
-                      ],
-                    ),
+                    onPressed: () async {
+                      await _sendMessage(textEditingController.text);
+                    },
                   ),
                 ],
               ),
             ),
+          ],
+        ),
+      ),
     );
   }
 
@@ -248,6 +253,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future _sendMessage(String text) async {
+    await FirebaseChat.sendMessage(psychologist.hash, text);
     // setState(() {
     //   chatMessages.add(_chatMessages(text, getUserLogged().hash));
     //   scrollController.jumpTo(scrollController.position.maxScrollExtent);
@@ -283,10 +289,10 @@ class _ChatScreenState extends State<ChatScreen> {
     //   align = Alignment.centerRight;
     //   alignRow = MainAxisAlignment.end;
     // } else {
-      backColor = const Color(0xffdbdbdb);
-      textColor = Colors.black;
-      align = Alignment.centerLeft;
-      alignRow = MainAxisAlignment.start;
+    backColor = const Color(0xffdbdbdb);
+    textColor = Colors.black;
+    align = Alignment.centerLeft;
+    alignRow = MainAxisAlignment.start;
     // }
 
     return GestureDetector(

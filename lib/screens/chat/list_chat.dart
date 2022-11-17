@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:union/model/holder/object_holder.dart';
 import 'package:union/model/psychologist.dart';
 import 'package:union/routes_names.dart';
 import 'package:union/services/psychologist_service.dart';
@@ -253,11 +254,17 @@ class _ListChatState extends State<ListChat> with WidgetsBindingObserver {
                   padding: const EdgeInsets.all(10.0),
                   itemCount: psychologists.length,
                   itemBuilder: (context, index) {
-                    return PsychologistCard(
-                      online: false,
-                      messageNumber: 1,
-                      avatar: psychologists[index].avatar,
-                      name: psychologists[index].name,
+                    return GestureDetector(
+                      onTap: () {
+                        ObjectHolder.currentChat = psychologists[index];
+                        Navigator.pushNamed(context, chatRoute);
+                      },
+                      child: PsychologistCard(
+                        online: false,
+                        messageNumber: 1,
+                        avatar: psychologists[index].avatar,
+                        name: psychologists[index].name,
+                      ),
                     );
                   },
                 ),

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "601325595119",
+    "project_id": "union-ba04c",
+    "storage_bucket": "union-ba04c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:601325595119:android:c56ce8c52693faf9b16e1a",
+        "android_client_info": {
+          "package_name": "com.byron.union"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "601325595119-ki9udr3kg5jkhp1qsa32hcd8oh829hge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBow6MrUecG3zERE8GBJtjj9YCDs2JXdDg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "601325595119-ki9udr3kg5jkhp1qsa32hcd8oh829hge.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

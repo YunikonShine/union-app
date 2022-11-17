@@ -23,6 +23,8 @@ dependencies:
   flutter_secure_storage: ^5.1.0
   intl: ^0.17.0
   share: ^2.0.4
+  cloud_firestore: ^3.4.8
+  firebase_core: ^1.22.0
 
 dev_dependencies:
   flutter_test:
